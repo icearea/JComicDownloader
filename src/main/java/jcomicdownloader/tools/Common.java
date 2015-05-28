@@ -2962,7 +2962,7 @@ public class Common
     // 取得目前程式檔名
     public static String getThisFileName()
     {
-        return ComicDownGUI.versionString.replaceAll( "  ", "_" ) + ".jar";
+        return ComicDownGUI.versionString.replaceAll(" ", "-" ) + ".jar";
     }
 
     // 下載j單一個ar檔，下載完畢自動重啟
