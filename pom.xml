@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.abc9070410</groupId>
     <artifactId>JComicDownloader</artifactId>
-    <version>v5.19-SNAPSHOT</version>
+    <version>v5.19</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,7 +43,6 @@
                 <artifactId>trident</artifactId>
                 <version>6.3</version>
         </dependency>
-
     </dependencies>
     
     <build>
@@ -67,6 +66,26 @@
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <classpathScope>runtime</classpathScope>
+                            <source>
+                                import jcomicdownloader.ComicDownGUI
+                                println(ComicDownGUI.versionString)                    
+                                project.build.finalName =ComicDownGUI.versionString
+                            </source>
                         </configuration>
                     </execution>
                 </executions>
