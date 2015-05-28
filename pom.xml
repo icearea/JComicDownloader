@@ -3,50 +3,79 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.abc9070410</groupId>
     <artifactId>JComicDownloader</artifactId>
-    <version>v5.19</version>
+    <version>v5.19.150528</version>
     <packaging>jar</packaging>
+    <licenses>
+        <license>
+            <name>GPLv3</name>
+            <url>http://www.gnu.org/copyleft/gpl.html</url>
+        </license>
+    </licenses>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <dependencies>
-        <dependency>
+    <dependencies> 
+         <dependency>
                 <groupId>org</groupId>
                 <artifactId>jaudiotagger</artifactId>
                 <version>2.2.3</version>
                 <scope>system</scope>
                 <systemPath>${project.basedir}/src/lib/jaudiotagger-2.2.3.jar</systemPath>
-        </dependency>
+        </dependency> 
         <dependency>
                 <groupId>com.jtattoo</groupId>
                 <artifactId>JTattoo</artifactId>
                 <version>1.6.11</version>
+                <scope>runtime</scope>
         </dependency>
         <dependency>
                 <groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
                 <artifactId>napkinlaf</artifactId>
                 <version>1.2</version>
+                <scope>runtime</scope>
         </dependency>
         <dependency>
                 <groupId>net.sf.nimrod</groupId>
                 <artifactId>nimrod-laf</artifactId>
                 <version>1.2</version>
+                <scope>runtime</scope>                
         </dependency>
         <dependency>
                 <groupId>com.github.insubstantial</groupId>
                 <artifactId>substance</artifactId>
                 <version>6.3</version>
+                <scope>runtime</scope>
         </dependency>
         <dependency>
                 <groupId>com.github.insubstantial</groupId>
                 <artifactId>trident</artifactId>
                 <version>6.3</version>
+                <scope>runtime</scope>
         </dependency>
     </dependencies>
-    
     <build>
         <plugins>
+<!--            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-3</version>
+                <executions>
+                    <execution>
+                        <id>download-jaudiotagger</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://bitbucket.org</url>
+                            <fromFile>ijabz/jaudiotagger/downloads/jaudiotagger-2.2.3.jar</fromFile>
+                            <toDir>${project.basedir}/src/lib/</toDir>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>		-->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.6</version>
@@ -70,12 +99,13 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
+                <version>1.5</version>
                 <executions>
                     <execution>
-                        <phase>prepare-package</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>execute</goal>
                         </goals>
@@ -83,13 +113,16 @@
                             <classpathScope>runtime</classpathScope>
                             <source>
                                 import jcomicdownloader.ComicDownGUI
-                                println(ComicDownGUI.versionString)                    
-                                project.build.finalName =ComicDownGUI.versionString
+                                def(name, ver)=ComicDownGUI.versionString.tokenize(" ")
+                                println(ComicDownGUI.versionString)
+                                project.build.finalName = name+"-"+ver
+                                project.version=ver 
+                                println(project.version)                               
                             </source>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-jar-plugin</artifactId>
