@@ -2,7 +2,7 @@
 
 * A tool which has the ability to download the online comics and novels from some china websites.
 
-![res](src/main/resources/screenshot2.png)
+![res](screenshot2.png)
 
 
 ## Website
@@ -24,9 +24,9 @@
 
 How to build this project
 ----
-*mvn package*
+*mvn install*
 
-copy JComicDownloader\*.jar and lib at *target* folder
+JComicDownloader will be avaliable in *output* folder
 
 ## External Library
 
