@@ -5,6 +5,8 @@
     <artifactId>JComicDownloader</artifactId>
     <version>v5.19.150529</version>
     <packaging>jar</packaging>
+    <description>A tool which has the ability to download the online comics and novels from some china websites.</description>
+    <url>https://sites.google.com/site/jcomicdownloader</url>   
     <licenses>
         <license>
             <name>GPLv3</name>
@@ -16,14 +18,32 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <dependencies> 
-         <dependency>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>http://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <name>jitpack.io Repository</name>            
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+	    <groupId>org.bitbucket.ijabz</groupId>
+	    <artifactId>jaudiotagger</artifactId>
+	    <version>21e1b39</version>
+        <scope>runtime</scope>                
+	</dependency>
+<!--         <dependency>
                 <groupId>org</groupId>
                 <artifactId>jaudiotagger</artifactId>
                 <version>2.2.3</version>
                 <scope>system</scope>
                 <systemPath>${project.basedir}/src/lib/jaudiotagger-2.2.3.jar</systemPath>
-        </dependency> 
+        </dependency> -->
         <dependency>
                 <groupId>com.jtattoo</groupId>
                 <artifactId>JTattoo</artifactId>
@@ -113,8 +133,6 @@
                             <classpathScope>runtime</classpathScope>
                             <source>
                                 import jcomicdownloader.ComicDownGUI
-<!--                                def loader = this.class.classLoader.rootLoader
-                                def GUI =Class.forName("jcomicdownloader.ComicDownGUI",true,loader)-->
                                 def(name, ver)= jcomicdownloader.ComicDownGUI.versionString.tokenize(" ")
                                 println(jcomicdownloader.ComicDownGUI.versionString)
                                 project.build.finalName = name+"-"+ver
@@ -137,7 +155,8 @@
                         <classpathPrefix>lib/</classpathPrefix>-->
                    </manifest>
                     <manifestEntries><!-- Custom add classpath instead of maven gen-->
-                        <Class-Path>JTattoo.1.6.11.jar lib/JTattoo.1.6.11.jar nimrod-laf-1.2.jar lib/nimrod-laf-1.2.jar napkinlaf-1.2.jar lib/napkinlaf-1.2.jar trident-6.3.jar lib/trident-6.3.jar substance-6.3.jar lib/substance-6.3.jar jaudiotagger-2.2.3.jar lib/jaudiotagger-2.2.3.jar </Class-Path>
+                        <!--<Class-Path>JTattoo.1.6.11.jar lib/JTattoo.1.6.11.jar nimrod-laf-1.2.jar lib/nimrod-laf-1.2.jar napkinlaf-1.2.jar lib/napkinlaf-1.2.jar trident-6.3.jar lib/trident-6.3.jar substance-6.3.jar lib/substance-6.3.jar jaudiotagger-2.2.3.jar lib/jaudiotagger-2.2.3.jar </Class-Path>-->
+                        <Class-Path>JTattoo.1.6.11.jar lib/JTattoo.1.6.11.jar nimrod-laf-1.2.jar lib/nimrod-laf-1.2.jar napkinlaf-1.2.jar lib/napkinlaf-1.2.jar trident-6.3.jar lib/trident-6.3.jar substance-6.3.jar lib/substance-6.3.jar jaudiotagger-21e1b39.jar lib/jaudiotagger-21e1b39.jar </Class-Path>
                         <SplashScreen-Image>jcomicdownloader/tools/resource/logo.png</SplashScreen-Image>
                     </manifestEntries>
                  </archive>
