@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.abc9070410</groupId>
     <artifactId>JComicDownloader</artifactId>
-    <version>v5.19.150528</version>
+    <version>v5.19.150529</version>
     <packaging>jar</packaging>
     <licenses>
         <license>
@@ -86,7 +86,7 @@
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
-                        <configuration>
+                        <configuration>                            
                             <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                             <includeEmptyDirs>true</includeEmptyDirs>
                             <resources>
@@ -99,7 +99,7 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>
+            <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <version>1.5</version>
@@ -113,8 +113,10 @@
                             <classpathScope>runtime</classpathScope>
                             <source>
                                 import jcomicdownloader.ComicDownGUI
-                                def(name, ver)=ComicDownGUI.versionString.tokenize(" ")
-                                println(ComicDownGUI.versionString)
+<!--                                def loader = this.class.classLoader.rootLoader
+                                def GUI =Class.forName("jcomicdownloader.ComicDownGUI",true,loader)-->
+                                def(name, ver)= jcomicdownloader.ComicDownGUI.versionString.tokenize(" ")
+                                println(jcomicdownloader.ComicDownGUI.versionString)
                                 project.build.finalName = name+"-"+ver
                                 project.version=ver 
                                 println(project.version)                               
@@ -122,7 +124,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-jar-plugin</artifactId>
@@ -151,13 +153,34 @@
                         <phase>package</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
+                        </goals>                        
+                        <configuration>                            
                             <outputDirectory>${project.build.directory}/lib/</outputDirectory>
-                        </configuration>
-                    </execution>
+                        </configuration>                        
+                    </execution>                       
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                  <execution>
+                    <id>copy</id>
+                    <phase>install</phase>
+                    <configuration>
+                      <tasks>
+                        <copy file="${project.build.directory}/${project.build.finalName}.jar" tofile="${project.basedir}/output/${project.build.finalName}.jar"/>
+                        <copy todir="${project.basedir}/output/lib">
+                          <fileset dir="${project.build.directory}/lib" />
+                        </copy>
+                      </tasks>
+                    </configuration>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </execution> 
+                </executions>
+              </plugin>
         </plugins>
    </build>
 </project>
