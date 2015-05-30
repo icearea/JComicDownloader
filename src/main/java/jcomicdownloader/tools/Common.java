@@ -3018,7 +3018,7 @@ public class Common
         if ( !Common.existJAR( jarClassName ) )
         {
           //  String jarFileURL = "https://sites.google.com/site/jcomicdownloader/release/jaudiotagger-2.0.4-20111207.115108-15.jar?attredirects=0&d=1";
-            String jarFileURL = "https://jitpack.io/org/bitbucket/ijabz/jaudiotagger/21e1b39/jaudiotagger-21e1b39.jar";
+            String jarFileURL = "https://abc9070410.github.io/JComicDownloader/jaudiotagger-21e1b39.jar";
             Common.downloadJarFile( jarFileURL, jarClassName );
         }
 

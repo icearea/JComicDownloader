@@ -849,19 +849,19 @@ public class CommonGUI
                 && !Common.existJAR( jtattooFileName ) )
         {
             new CommonGUI().downloadNewTheme( "JTattoo", jtattooFileName,
-                                              "http://www.jtattoo.net/downloads/JTattoo-1.6.11.jar" ); // 下載JTattoo.jar
+                                              "https://abc9070410.github.io/JComicDownloader/JTattoo-1.6.11.jar" ); // 下載JTattoo.jar
         }
         else if ( SetUp.getSkinClassName().matches( nimrodClassName )
                 && !Common.existJAR( nimrodFileName ) )
         {
             new CommonGUI().downloadNewTheme( "NimRod", nimrodFileName,
-                                              "http://central.maven.org/maven2/net/sf/nimrod/nimrod-laf/1.2/nimrod-laf-1.2.jar" ); // 下載nimrodlf-1.2.jar
+                                              "https://abc9070410.github.io/JComicDownloader/nimrod-laf-1.2.jar" ); // 下載nimrodlf-1.2.jar
         }
         else if ( SetUp.getSkinClassName().matches( napkinClassName )
                 && !Common.existJAR( napkinFileName ) )
         {
             new CommonGUI().downloadNewTheme( "Napkin", napkinFileName,
-                                              "http://central.maven.org/maven2/net/sf/squirrel-sql/thirdparty-non-maven/napkinlaf/1.2/napkinlaf-1.2.jar" ); // 下載napkinlaf-1.2.jar
+                                              "https://abc9070410.github.io/JComicDownloader/napkinlaf-1.2.jar" ); // 下載napkinlaf-1.2.jar
         }
         else if ( SetUp.getSkinClassName().matches( substanceClassName )
                 && (!Common.existJAR( substanceFileName ) || !Common.existJAR( tridentFileName )) )
@@ -876,8 +876,8 @@ public class CommonGUI
             };
             String[] urls = new String[]
             {
-                "http://central.maven.org/maven2/com/github/insubstantial/substance/6.3/substance-6.3.jar",
-                "http://central.maven.org/maven2/com/github/insubstantial/trident/6.3/trident-6.3.jar"
+                "https://abc9070410.github.io/JComicDownloader/substance-6.3.jar",
+                "https://abc9070410.github.io/JComicDownloader/trident-6.3.jar"
             };
             new CommonGUI().downloadNewTheme( themeNames, fileNames,
                                               urls ); // 
