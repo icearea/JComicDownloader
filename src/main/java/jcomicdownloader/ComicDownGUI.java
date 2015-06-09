@@ -558,7 +558,9 @@ public class ComicDownGUI extends JFrame implements ActionListener,
     private Run mainRun;
     private int nowDownloadMissionRow; // 目前正在進行下載的任務列的順序
     Dimension frameDimension;
-    public static String versionString = "JComicDownloader v5.19." + new SimpleDateFormat("yyMMddHHmmss").format(Calendar.getInstance().getTime());
+    public final static String versionString = "JComicDownloader v5.19.150530";//+ new SimpleDateFormat("yyMMdd").format(Calendar.getInstance().getTime());
+    
+ //   public final static String versionString = "JComicDownloader v5.19."+ new SimpleDateFormat("yyMMddHHmmss").format(Calendar.getInstance().getTime());
 
     public ComicDownGUI() {
         super(versionString);
@@ -729,8 +731,8 @@ public class ComicDownGUI extends JFrame implements ActionListener,
 
         try {
             if (skinClassName.matches(".*substance.api.skin.*")
-                    && !new File(Common.getNowAbsolutePath() + "trident.jar").exists()) {
-                throw new Exception("資料夾內找不到trident.jar，無法設置Substance介面");
+                    && !new File(Common.getNowAbsolutePath() + "lib/trident-6.3.jar").exists()) {
+                throw new Exception("資料夾內找不到lib/trident-6.3.jar，無法設置Substance介面");
             }
 
             CommonGUI.setLookAndFeelByClassName(skinClassName);
