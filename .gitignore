@@ -1,0 +1,26 @@
+# NetBeans
+/build.xml
+/nbproject
+/dist
+
+# IntelliJ IDEA
+/.idea
+/out
+/*.iml
+
+# Maven out & debug
+/target
+/temp
+
+# debug files
+/set.ini
+/bookmarkList.dat
+/downloadList.dat
+/recordList.dat
+/ErrorRecord
+JComicDownloader.settings
+output
+
+#bak file
+/src/test/java/jcomicdownloader/*.bak
+down
